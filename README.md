@@ -15,9 +15,5 @@
 - **JavaScript (Vanilla)**
 - [Hacker News API](https://github.com/HackerNews/API)
 
-## 📸 Anteprima
-
-![Project Preview](https://raw.githubusercontent.com/xD4niii/Project_Hackernews/main/preview.png)
-
 ## 🌐 Link
-([projecthackernews.netlify.app](https://projecthackernews.netlify.app/))
+- [projecthackernews.netlify.app](https://projecthackernews.netlify.app/)
