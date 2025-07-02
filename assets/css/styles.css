@@ -47,6 +47,12 @@ body{
     background-color: #0a91ab;
     margin-top: 40px;
     min-height: 125px;
+    border: 2px solid black;
+}
+
+.card:hover{
+    border-color: #ffc045;
+    transition: 600ms;
 }
 
 .card-link:link{
@@ -93,6 +99,10 @@ body{
   color: #181717;
 }
 
+.footlink:hover{
+    color: #ffc045; 
+    transition: 600ms;
+}
 
 footer{
     background-color: black;
