@@ -4,13 +4,10 @@
   box-sizing: border-box;
 }
 
-html{
+html, body{
     background-color: #0c2233;
+    max-width: 100%;
     overflow-x: hidden;
-}
-
-body{
-    background-color: #0c2233;
 }
 
 .navbar{
@@ -125,6 +122,11 @@ footer{
 
 .page{
     background-color: rgba(0, 0, 0, 0.466)
+}
+
+html, body{
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 }
