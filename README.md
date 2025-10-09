@@ -13,6 +13,7 @@
 - **HTML5**
 - **CSS3**
 - **JavaScript (Vanilla)**
+- **Webpack**
 - [Hacker News API](https://github.com/HackerNews/API)
 
 ## 🌐 Link
