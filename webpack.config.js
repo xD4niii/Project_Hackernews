@@ -27,7 +27,7 @@ module.exports = {
             template: './src/index.html',
         }),
     ],
-    mode: 'development',
+    mode: 'production',
     // devtool: 'source-map',
     // devServer: {
     //     static: {

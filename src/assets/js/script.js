@@ -4,7 +4,8 @@ let listaId = [];
 let idInfo = [];
 const colSinistra = document.getElementById("col-sinistra");
 const colDestra = document.getElementById("col-destra");
-let btnLoad = document.getElementById("btnLoadMore")
+const load = document.getElementById("load");
+let btnLoad = document.getElementById("btnLoadMore");
 
 
 function createCard(titolo, url, date, column){
@@ -84,10 +85,32 @@ async function caricaDati() {
 }
 
    
+    function loader(load) {
+        
+        if(!load){
+            console.log("Loader non disponibile");
+            return;
+        }
+
+        setTimeout(() => {
+            load.classList.remove("d-none");
+            load.classList.add("d-block");
+            
+        }, 100)
+        
+        setTimeout(() => {
+            load.classList.remove("d-block");
+            load.classList.add("d-none");
+            
+        }, 1000)
+        
+        
+    }
+
 btnLoad.addEventListener("click", () => {
-
+    
     caricaDati();
-
+    loader(load);
 });
 
 caricaDati();
