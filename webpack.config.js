@@ -34,22 +34,23 @@ module.exports = {
             logo: "src/assets/img/favicon/favicon-32x32.png",
             manifest: "src/assets/img/favicon/site.webmanifest",
             inject: true,
-            cache: true,
-            
+            cache: false,
+            // mode: "light",
+            // devmode: "light",
 
             icons: {
-                android: false,
-                appleIcon: true,
+                android: true,
+                appleIcon: false,
                 appleStartup: false,
                 coast: false,
                 favicons: true,
                 firefox: true,
-                windows: true,
+                windows: false,
                 yandex: false
             },
         })
     ],
-    mode: 'production',
+    mode: 'development',
     // devtool: 'source-map',
     // devServer: {
     //     static: {

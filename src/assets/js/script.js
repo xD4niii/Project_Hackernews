@@ -28,8 +28,6 @@ function createCard(titolo, url, date, column){
         title.appendChild(document.createTextNode(titolo))
         innerDiv.appendChild(title)
 
-        
-
         const time = document.createElement("p")
         time.className = "card-text"
         time.appendChild(document.createTextNode(date.toLocaleDateString()))
@@ -84,31 +82,34 @@ async function caricaDati() {
     console.log(listaId);
 }
 
+    
    
-    function loader(load) {
+    // function loader(load) {
         
-        if(!load){
-            console.log("Loader non disponibile");
-            return;
-        }
+    //     if(!load){
+    //         console.log("Loader non disponibile");
+    //         return;
+    //     }
 
-        setTimeout(() => {
-            load.classList.remove("d-none");
-            load.classList.add("d-block");
+    //     setTimeout(() => {
+    //         load.classList.remove("d-none");
+    //         load.classList.add("d-block");
             
-        }, 100)
+    //     }, 100)
         
-        setTimeout(() => {
-            load.classList.remove("d-block");
-            load.classList.add("d-none");
+    //     setTimeout(() => {
+    //         load.classList.remove("d-block");
+    //         load.classList.add("d-none");
             
-        }, 1000)
-    }
+    //     }, 1000)
+    // }
+
+
 
 btnLoad.addEventListener("click", () => {
     
-    caricaDati();
-    loader(load);
+    loadMore();
+    // loader(load);
 });
 
 caricaDati();
