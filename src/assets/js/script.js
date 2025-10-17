@@ -103,8 +103,6 @@ async function caricaDati() {
             load.classList.add("d-none");
             
         }, 1000)
-        
-        
     }
 
 btnLoad.addEventListener("click", () => {

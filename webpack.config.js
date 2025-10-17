@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -26,10 +27,29 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html',
+            publicPath: './'
         }),
-        new MiniCssExtractPlugin({ filename: 'styles.css' })
+        new MiniCssExtractPlugin({ filename: 'styles.css' }),
+        new FaviconsWebpackPlugin({
+            logo: "src/assets/img/favicon/favicon-32x32.png",
+            manifest: "src/assets/img/favicon/site.webmanifest",
+            inject: true,
+            cache: true,
+            
+
+            icons: {
+                android: false,
+                appleIcon: true,
+                appleStartup: false,
+                coast: false,
+                favicons: true,
+                firefox: false,
+                windows: false,
+                yandex: false
+            },
+        })
     ],
-    mode: 'production',
+    mode: 'development',
     // devtool: 'source-map',
     // devServer: {
     //     static: {
