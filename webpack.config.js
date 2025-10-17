@@ -43,13 +43,13 @@ module.exports = {
                 appleStartup: false,
                 coast: false,
                 favicons: true,
-                firefox: false,
-                windows: false,
+                firefox: true,
+                windows: true,
                 yandex: false
             },
         })
     ],
-    mode: 'development',
+    mode: 'production',
     // devtool: 'source-map',
     // devServer: {
     //     static: {
