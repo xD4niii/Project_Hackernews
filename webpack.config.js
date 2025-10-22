@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -20,10 +21,19 @@ module.exports = {
             {
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
             type: 'asset/resource',
-      },
+            },
+            {
+            test: /\.m?js$/,
+            exclude: /node_modules/,
+            use: {
+                loader: "babel-loader"
+            },
+            },
+            
         ],
     },
     plugins: [
+        new LodashModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html',
@@ -49,8 +59,9 @@ module.exports = {
                 yandex: false
             },
         })
+    
     ],
-    mode: 'development',
+    mode: 'production',
     // devtool: 'source-map',
     // devServer: {
     //     static: {

@@ -1,10 +1,15 @@
-
+import axios from "axios";
+import _ from "lodash";
 
 let listaId = [];
 let idInfo = [];
+let dataNews = [];
+let idDaCaricare = [];
+const nuoveNews = [];
+let totaleNotizie = 0;
 const colSinistra = document.getElementById("col-sinistra");
 const colDestra = document.getElementById("col-destra");
-const load = document.getElementById("load");
+// const load = document.getElementById("load");
 let btnLoad = document.getElementById("btnLoadMore");
 
 
@@ -36,53 +41,62 @@ function createCard(titolo, url, date, column){
         column.appendChild(card);
         
     }
+
+
+    function createDomElement(news){
+
+        news.forEach((n, index) => {
+        let titolo = n.title || "Titolo non disponibile";
+        let url = n.url || "#";
+        let date = new Date(n.time * 1000);
+        const colonna = totaleNotizie % 2 === 0 ? colSinistra : colDestra;
+
+        if (index < 5) {
+        createCard(titolo, url, date, colonna);
+        } else {
+        createCard(titolo, url, date, colonna);
+        }
+        totaleNotizie ++;
+    });
+    }
+
         
 async function caricaDati() {
     try {
         if (listaId.length === 0) {
-            const response = await fetch("https://hacker-news.firebaseio.com/v0/newstories.json");
-            if (!response.ok) throw new Error("Errore " + response.status);
-            listaId = await response.json();
-            console.log(listaId)
-        }
+            const initResponse = await axios.get("https://hacker-news.firebaseio.com/v0/newstories.json");
+            listaId = initResponse.data;
+            }
+                
+            console.log(listaId)        
 
-        const idDaCaricare = listaId.splice(0, 10);
-        const nuoveNews = [];
+        idDaCaricare = _.take(listaId, 10);
+        listaId = _.drop(listaId,10);
 
         for (let id of idDaCaricare) {
-            try {
-                const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-                if (!response.ok) throw new Error("Errore " + response.status);
-                const data = await response.json();
-                nuoveNews.push(data);
-                idInfo.push(data);
-            } catch (error) {
-                console.error("Errore item:", error);
-            }
-            console.log(id)
+            
+                let response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+                    dataNews = response.data;
+
+                    console.log(dataNews);
+                    nuoveNews.push(dataNews);
+                    idInfo.push(dataNews);
+
+                    console.log(id);
+                
+            } 
+        }catch{
+            console.warn("Errore durante il caricamento della lista:", error);
         }
+            createDomElement(nuoveNews);
 
-        nuoveNews.forEach((n, index) => {
-        let titolo = n.title;
-        let url = n.url;
-        let date = new Date(n.time * 1000);
-
-        if (index < 5) {
-        createCard(titolo, url, date, colSinistra);
-        } else {
-        createCard(titolo, url, date, colDestra);
-        }
-    });
-
-    } catch (error) {
-        console.error("Errore generale:", error);
     }
-    
-    console.log(idInfo);
-    console.log(listaId);
-}
 
-    
+
+    // console.log(listaId);
+    // console.log(idInfo);
+   
+
    
     // function loader(load) {
         
@@ -108,7 +122,7 @@ async function caricaDati() {
 
 btnLoad.addEventListener("click", () => {
     
-    loadMore();
+    caricaDati();
     // loader(load);
 });
 
