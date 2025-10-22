@@ -62,8 +62,8 @@ module.exports = {
         }),
         new CopyPlugin({
         patterns: [
-        { from: 'src/assets/img/favicon/site.webmanifest', to: '' },
-        { from: 'src/assets/img/favicon/favicon.ico', to: '' }
+        { from: 'src/assets/img/favicon/site.webmanifest', to: 'site.webmanifest' },
+        { from: 'src/assets/img/favicon/favicon.ico', to: 'favicon.ico' }
       ],
     }),
     
