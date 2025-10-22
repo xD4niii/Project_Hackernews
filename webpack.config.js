@@ -54,7 +54,7 @@ module.exports = {
                 appleIcon: false,
                 appleStartup: false,
                 coast: false,
-                favicons: true,
+                favicons: false,
                 firefox: true,
                 windows: false,
                 yandex: false
@@ -62,8 +62,8 @@ module.exports = {
         }),
         new CopyPlugin({
         patterns: [
-        { from: 'src/assets/img/favicon/site.webmanifest', to: '/dist/assets/site.webmanifest' },
-        { from: 'src/assets/img/favicon/favicon.ico', to: '/dist/assets/favicon.ico' }
+        { from: 'src/assets/img/favicon/site.webmanifest', to: 'site.webmanifest' },
+        { from: 'src/assets/img/favicon/favicon.ico', to: 'favicon.ico' },
       ],
     }),
     
