@@ -11,6 +11,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: "/",
         clean: true,
     },
     module: {
@@ -68,7 +69,7 @@ module.exports = {
     }),
     
     ],
-    mode: 'production',
+    mode: 'development',
     // devtool: 'source-map',
     // devServer: {
     //     static: {
