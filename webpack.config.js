@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -58,7 +59,13 @@ module.exports = {
                 windows: false,
                 yandex: false
             },
-        })
+        }),
+        new CopyPlugin({
+        patterns: [
+        { from: 'src/assets/img/favicon/site.webmanifest', to: '' },
+        { from: 'src/assets/img/favicon/favicon.ico', to: '' }
+      ],
+    }),
     
     ],
     mode: 'production',

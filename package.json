@@ -5,6 +5,7 @@
     "babel-loader": "^10.0.0",
     "babel-plugin-lodash": "^3.3.4",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",
     "favicons": "^7.2.0",
     "favicons-webpack-plugin": "^6.0.1",
