@@ -9,7 +9,7 @@ const nuoveNews = [];
 let totaleNotizie = 0;
 const colSinistra = document.getElementById("col-sinistra");
 const colDestra = document.getElementById("col-destra");
-// const load = document.getElementById("load");
+const load = document.getElementById("load");
 let btnLoad = document.getElementById("btnLoadMore");
 
 
@@ -57,8 +57,28 @@ function createCard(titolo, url, date, column){
         createCard(titolo, url, date, colonna);
         }
         totaleNotizie ++;
+
+        btnLoad.classList.replace("d-none", "d-block");
+        load.classList.replace("d-block", "d-none");
+
+        // console.log(totaleNotizie.value)
     });
     }
+
+
+        function loader(load) {
+        
+        if(!load){
+            console.log("Loader non disponibile");
+        }
+
+        btnLoad.classList.replace("d-block", "d-none");
+        // console.warn("btnload off");
+
+        load.classList.replace("d-none", "d-block");
+        // console.warn("load on");
+    }
+
 
         
 async function caricaDati() {
@@ -98,32 +118,12 @@ async function caricaDati() {
    
 
    
-    // function loader(load) {
-        
-    //     if(!load){
-    //         console.log("Loader non disponibile");
-    //         return;
-    //     }
-
-    //     setTimeout(() => {
-    //         load.classList.remove("d-none");
-    //         load.classList.add("d-block");
-            
-    //     }, 100)
-        
-    //     setTimeout(() => {
-    //         load.classList.remove("d-block");
-    //         load.classList.add("d-none");
-            
-    //     }, 1000)
-    // }
-
 
 
 btnLoad.addEventListener("click", () => {
     
     caricaDati();
-    // loader(load);
+    loader(load);
 });
 
 caricaDati();
