@@ -3,7 +3,6 @@ import _ from "lodash";
 
 let listaId = [];
 let idInfo = [];
-let dataNews = [];
 let idDaCaricare = [];
 const nuoveNews = [];
 let totaleNotizie = 0;
@@ -13,73 +12,61 @@ const load = document.getElementById("load");
 let btnLoad = document.getElementById("btnLoadMore");
 
 
-function createCard(titolo, url, date, column){
-
-        const card = document.createElement("div")
-        card.className = "card text-center mb-3"
-        card.style.width = "18rem"
-        
-        const description = document.createElement("a")
-        description.className = "card-link"
-        description.href = url;
-        card.appendChild(description)
-
-        const innerDiv = document.createElement("div")
-        innerDiv.className = "card-body"
-        description.appendChild(innerDiv)
-
-        const title = document.createElement("h5")
-        title.className = "card-title"
-        title.appendChild(document.createTextNode(titolo))
-        innerDiv.appendChild(title)
-
-        const time = document.createElement("p")
-        time.className = "card-text"
-        time.appendChild(document.createTextNode(date.toLocaleDateString()))
-        innerDiv.appendChild(time)
-
-        column.appendChild(card);
-        
-    }
-
-
     function createDomElement(news){
 
-        news.forEach((n, index) => {
+        news.forEach((n) => {
         let titolo = n.title || "Titolo non disponibile";
         let url = n.url || "#";
         let date = new Date(n.time * 1000);
         const colonna = totaleNotizie % 2 === 0 ? colSinistra : colDestra;
 
-        if (index < 5) {
         createCard(titolo, url, date, colonna);
-        } else {
-        createCard(titolo, url, date, colonna);
-        }
         totaleNotizie ++;
-
-        btnLoad.classList.replace("d-none", "d-block");
-        load.classList.replace("d-block", "d-none");
-
-        // console.log(totaleNotizie.value)
+        
     });
     }
 
 
-        function loader(load) {
-        
-        if(!load){
-            console.log("Loader non disponibile");
+        function createElement(tag, {className, text, href, parent} = {}){
+            const e = document.createElement(tag);
+
+            if(className) e.className = className;
+            if(text) e.appendChild(document.createTextNode(text));
+            if(href) e.href = href;
+            if(parent) parent.appendChild(e);
+
+            return e;
         }
 
-        btnLoad.classList.replace("d-block", "d-none");
-        // console.warn("btnload off");
+        
+        function createCard(titolo, url, date, column){
+            const card = createElement("div", {className: "card text-center mb-3", parent: column});
+            card.style.width = "18rem";
 
-        load.classList.replace("d-none", "d-block");
-        // console.warn("load on");
+            const description = createElement("a", {className:"card-link", href: url, parent: card});
+            const innerDiv = createElement("div", {className:"card-body", parent: description});
+
+            createElement("h5", {className:"card-title", text: titolo, parent: innerDiv});
+            createElement("p", {className:"card-text", text: date.toLocaleDateString(), parent: innerDiv});
+        }
+
+
+
+        function loaderOn() {
+
+            btnLoad.classList.replace("d-block", "d-none");
+
+            load.classList.replace("d-none", "d-block");
+
     }
 
+        function loaderOff() {
 
+            load.classList.replace("d-block", "d-none");
+
+            btnLoad.classList.replace("d-none", "d-block");
+
+        }
         
 async function caricaDati() {
     try {
@@ -96,7 +83,7 @@ async function caricaDati() {
         for (let id of idDaCaricare) {
             
                 let response = await axios.get(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
-                    dataNews = response.data;
+                    const dataNews = response.data;
 
                     console.log(dataNews);
                     nuoveNews.push(dataNews);
@@ -105,10 +92,14 @@ async function caricaDati() {
                     console.log(id);
                 
             } 
-        }catch{
-            console.warn("Errore durante il caricamento della lista:", error);
-        }
             createDomElement(nuoveNews);
+            console.log("Caricamento completato!🫡");
+        }catch(error){
+            console.warn("Errore durante il caricamento della lista:", error);
+        }finally{
+            loaderOff();
+        }
+            
 
     }
 
@@ -123,7 +114,7 @@ async function caricaDati() {
 btnLoad.addEventListener("click", () => {
     
     caricaDati();
-    loader(load);
+    loaderOn();
 });
 
 caricaDati();

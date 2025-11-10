@@ -1,0 +1,184 @@
+/*!*****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/assets/css/styles.css ***!
+  \*****************************************************************************/
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+    background-color: #0c2233;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.navbar{
+    align-content: center;
+}
+
+.navbar-brand{
+    color: #ffc045;
+}
+
+.navbar-brand:hover{
+    color: #ffc045;
+}
+
+.navbar-brand:visited{
+    color: #ffc045;
+}
+
+.page{
+    padding-bottom: 2.5rem;
+    position: relative;
+    min-height: 100vh;
+    background-image: radial-gradient(#ffc045 1px, transparent 1px);
+	background-size: 10px 10px;
+	background-color: #0c2233;
+}
+
+.loader{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  z-index: 10;
+  background:conic-gradient(#0000 10%,#ffc045);
+  mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+-webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation:s3 1s infinite linear;
+}
+@keyframes s3 {to{transform: rotate(1turn)}}
+
+.card-container{
+   min-height: 100vh;
+}
+
+
+.card{
+    background-color: #0a91ab;
+    margin-top: 40px;
+    min-height: 125px;
+    border: 2px solid black;
+}
+
+.card:hover{
+    border-color: #ffc045;
+    transition: 600ms;
+}
+
+.card-link:link{
+    text-decoration: none;
+    color: black;
+}
+
+.card-link:hover{
+    color: #ffc045; 
+    transition: 600ms;
+}
+
+.card-col{
+    background-color: #505458;
+    } 
+
+.btnLoad {
+  display: flex;
+  padding: 8px 15px;
+  max-width: fit-content;
+  margin: 30px auto;
+  background-color: #0a91ab;
+  outline: 3px #181717 solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.btnLoad .text {
+    margin: 0 auto;
+    color: #e4dcef;
+    font-weight: 700;
+     font-size: 1em;
+     transition: 400ms;
+}
+
+.btnLoad:hover {
+  background-color: #ffc045;
+}
+
+.btnLoad:hover .text {
+  color: #181717;
+}
+
+.footlink:hover{
+    color: #ffc045; 
+    transition: 600ms;
+}
+
+footer{
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: fit-content; 
+    color: white;
+}
+
+@media screen and (max-width: 560px){
+    
+#col-sinistra{
+    background-color: rgba(0, 0, 0, 0.466);
+}
+
+#col-destra{
+    background-color: rgba(0, 0, 0, 0.466);
+}
+
+.page{
+    background-color: rgba(0, 0, 0, 0.466)
+}
+
+html, body{
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
