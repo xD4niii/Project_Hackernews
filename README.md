@@ -14,6 +14,8 @@
 - **CSS3**
 - **JavaScript (Vanilla)**
 - **Webpack**
+- **Axios**
+- **Lodash**
 - [Hacker News API](https://github.com/HackerNews/API)
 
 ## 🌐 Link
